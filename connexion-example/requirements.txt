@@ -1,0 +1,6 @@
+connexion[swagger-ui]==2.13.1
+Flask-Sqlalchemy==2.5.1
+Sqlalchemy==1.4.37
+Flask==2.1.2
+bcrypt==3.2.2
+pyjwt==2.0.1
