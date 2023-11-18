@@ -40,10 +40,16 @@ paths:
 
   /articles:
     get:
-      summary: Get all user articles
+      summary: Get all user articles, filtered by year (optional)
       operationId: lib.views.view_articles.get
       security:
         - jwt: [ ]
+      parameters:
+        - name: year
+          in: query
+          required: false
+          schema:
+            type: integer
       responses:
         '200':
           description: User articles
@@ -123,6 +129,11 @@ components:
           type: string
         content:
           type: string
+        release_date:
+          type: string
+          format: date-time
+          nullable: true
+          description: Date in ISO8601 format
       required:
         - article_id
         - title
