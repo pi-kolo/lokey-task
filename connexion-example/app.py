@@ -4,10 +4,12 @@ from lib.config import CONFIG
 def build_app():
     import connexion as connexion
     from lib.models import db
+    from flask_cors import CORS
+
 
     debug_mode = (CONFIG.ENVIRONMENT != 'production')
     app = connexion.App(__name__, specification_dir='lib/', debug=debug_mode)
-
+    CORS(app.app)
     app.add_api('api_spec.yaml', base_path='/api', validate_responses=debug_mode, options={"swagger_ui": debug_mode})
 
     flask_app = app.app
